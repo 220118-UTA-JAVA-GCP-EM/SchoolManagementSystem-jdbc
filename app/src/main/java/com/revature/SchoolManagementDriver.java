@@ -3,9 +3,25 @@
  */
 package com.revature;
 
+import com.revature.daos.PersonDao;
+import com.revature.daos.PersonDaoImpl;
+import com.revature.models.Person;
+import com.revature.models.Type;
+import com.revature.util.ConnectionUtil;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class SchoolManagementDriver {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
 
+        PersonDao personDao = new PersonDaoImpl();
+
+        Person person = new Person(Type.STUDENT, "Sally", "Jenkins", "sally@gmail.com", "p4ssw0rd");
+
+        boolean success = personDao.createPerson(person);
+
+        System.out.println(success);
     }
 }

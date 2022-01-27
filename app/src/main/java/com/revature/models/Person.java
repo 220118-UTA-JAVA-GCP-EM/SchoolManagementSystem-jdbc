@@ -12,6 +12,14 @@ public class Person {
     public Person() {
     }
 
+    public Person(Type type, String first, String last, String email, String password) {
+        this.type = type;
+        this.first = first;
+        this.last = last;
+        this.email = email;
+        this.password = password;
+    }
+
     public Person(int personId, Type type, String first, String last, String email, String password) {
         this.personId = personId;
         this.type = type;
