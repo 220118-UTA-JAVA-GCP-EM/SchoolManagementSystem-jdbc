@@ -8,6 +8,9 @@ public interface PersonDao {
 
     public boolean createPerson(Person p);
     public List<Person> getAllPeople();
+    public Person getPersonById(int id);
+
+    public boolean updatePerson(Person p);
     //other crud methods
 
 }

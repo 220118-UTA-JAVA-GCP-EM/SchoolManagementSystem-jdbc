@@ -7,21 +7,29 @@ import com.revature.daos.PersonDao;
 import com.revature.daos.PersonDaoImpl;
 import com.revature.models.Person;
 import com.revature.models.Type;
-import com.revature.util.ConnectionUtil;
+import com.revature.services.PersonService;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.util.List;
 
 public class SchoolManagementDriver {
 
     public static void main(String[] args)  {
 
-        PersonDao personDao = new PersonDaoImpl();
+        PersonService personService = new PersonService();
+//        personService.createPerson(Type.TEACHER, "Molly", "Smith", "helloworld");
+//
+//        List<Person> people = personService.getAll();
+//        for(Person p: people){
+//            System.out.println(p);
+//        }
 
-        Person person = new Person(Type.STUDENT, "Sally", "Jenkins", "sally@gmail.com", "p4ssw0rd");
+//        PersonDao personDao = new PersonDaoImpl();
+//        personDao.updatePerson(new Person(21, Type.STUDENT, "Carolyn", "Rehm", "crehm@myschool.com", "supersecret"));
 
-        boolean success = personDao.createPerson(person);
+//        System.out.println(personDao.getPersonById(7));
+//        System.out.println(personDao.getPersonById(798));
 
+        boolean success = personService.changePassword("Pcf2PZwL", "justpeachy", 7);
         System.out.println(success);
     }
 }
