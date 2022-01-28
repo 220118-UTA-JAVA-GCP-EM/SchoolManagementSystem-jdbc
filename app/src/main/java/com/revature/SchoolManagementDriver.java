@@ -8,28 +8,16 @@ import com.revature.daos.PersonDaoImpl;
 import com.revature.models.Person;
 import com.revature.models.Type;
 import com.revature.services.PersonService;
+import io.javalin.Javalin;
+import io.javalin.http.Context;
 
 import java.util.List;
 
 public class SchoolManagementDriver {
 
     public static void main(String[] args)  {
+        Javalin app = Javalin.create().start();
+        app.get("/", ctx -> ctx.result("Hello World"));
 
-        PersonService personService = new PersonService();
-//        personService.createPerson(Type.TEACHER, "Molly", "Smith", "helloworld");
-//
-//        List<Person> people = personService.getAll();
-//        for(Person p: people){
-//            System.out.println(p);
-//        }
-
-//        PersonDao personDao = new PersonDaoImpl();
-//        personDao.updatePerson(new Person(21, Type.STUDENT, "Carolyn", "Rehm", "crehm@myschool.com", "supersecret"));
-
-//        System.out.println(personDao.getPersonById(7));
-//        System.out.println(personDao.getPersonById(798));
-
-        boolean success = personService.changePassword("Pcf2PZwL", "justpeachy", 7);
-        System.out.println(success);
     }
 }

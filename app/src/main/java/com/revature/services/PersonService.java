@@ -45,7 +45,8 @@ public class PersonService {
         return false;
     }
 
-    //Without a database, other parts of crud don't really work, so we will leave those for next week
-
+    public Person getById(int id){
+        return personDao.getPersonById(id);
+    }
 
 }
