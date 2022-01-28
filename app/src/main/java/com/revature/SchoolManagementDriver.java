@@ -3,6 +3,8 @@
  */
 package com.revature;
 
+import com.revature.controllers.AppExceptionHandler;
+import com.revature.controllers.PersonController;
 import com.revature.daos.PersonDao;
 import com.revature.daos.PersonDaoImpl;
 import com.revature.models.Person;
@@ -16,60 +18,29 @@ import java.util.List;
 public class SchoolManagementDriver {
 
     public static void main(String[] args)  {
-        Javalin app = Javalin.create().start();
-        app.get("/", ctx -> ctx.result("Hello World"));
+        JavalinApp app = new JavalinApp();
+        app.start(8080);
 
-        PersonService personService = new PersonService();
-        app.get("/people", ctx -> {
-            List<Person> people = personService.getAll();
-            ctx.json(people);
-        });
+
+        /*
+        Javalin app = Javalin.create().start();
+
+        PersonController personController = new PersonController();
+        AppExceptionHandler appExceptionHandler = new AppExceptionHandler();
+
+        app.get("/people", personController::handleGetAll);
 
         // GET /people/5
-        app.get("/people/{id}", ctx -> {
-            String idParam = ctx.pathParam("id");
-            int id = Integer.parseInt(idParam);
-            Person person = personService.getById(id);
-            ctx.json(person);
-        });
+        app.get("/people/{id}", personController::handleGetOne);
 
-        app.put("/people/{id}", ctx -> {
-            // interpret incoming request
-            String idParam = ctx.pathParam("id");
-            Person personToUpdate = ctx.bodyAsClass(Person.class);
-            int idToUpdate = Integer.parseInt(idParam);
-            personToUpdate.setPersonId(idToUpdate);
+        app.put("/people/{id}", personController::handleUpdate);
 
-            //fulfill the request
-            boolean success = personService.update(personToUpdate);
+        app.exception(NumberFormatException.class, appExceptionHandler::handleNumberFormatException);
 
-            //respond to client
-            if(success){
-                ctx.status(200);
-            } else {
-                ctx.status(400);
-            }
-        });
+        app.post("/people", personController::handleCreate);
 
-        app.exception(NumberFormatException.class, (e, ctx)->{
-            ctx.status(400);
-            ctx.result("The input you provided cannot be parsed to an int value");
-        });
-
-        app.post("/people", ctx -> {
-            // interpret request
-            Person newPerson = ctx.bodyAsClass(Person.class);
-            boolean success = personService.createPerson(newPerson);
-
-            // prepare response
-            if(success){
-                ctx.status(201);
-            } else {
-                ctx.status(400);
-            }
-        });
-
-        app.delete("/people", ctx -> ctx.status(405));
+        app.delete("/people", personController::handleDelete);
+         */
 
     }
 }
