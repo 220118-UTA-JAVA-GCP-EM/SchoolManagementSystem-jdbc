@@ -19,5 +19,57 @@ public class SchoolManagementDriver {
         Javalin app = Javalin.create().start();
         app.get("/", ctx -> ctx.result("Hello World"));
 
+        PersonService personService = new PersonService();
+        app.get("/people", ctx -> {
+            List<Person> people = personService.getAll();
+            ctx.json(people);
+        });
+
+        // GET /people/5
+        app.get("/people/{id}", ctx -> {
+            String idParam = ctx.pathParam("id");
+            int id = Integer.parseInt(idParam);
+            Person person = personService.getById(id);
+            ctx.json(person);
+        });
+
+        app.put("/people/{id}", ctx -> {
+            // interpret incoming request
+            String idParam = ctx.pathParam("id");
+            Person personToUpdate = ctx.bodyAsClass(Person.class);
+            int idToUpdate = Integer.parseInt(idParam);
+            personToUpdate.setPersonId(idToUpdate);
+
+            //fulfill the request
+            boolean success = personService.update(personToUpdate);
+
+            //respond to client
+            if(success){
+                ctx.status(200);
+            } else {
+                ctx.status(400);
+            }
+        });
+
+        app.exception(NumberFormatException.class, (e, ctx)->{
+            ctx.status(400);
+            ctx.result("The input you provided cannot be parsed to an int value");
+        });
+
+        app.post("/people", ctx -> {
+            // interpret request
+            Person newPerson = ctx.bodyAsClass(Person.class);
+            boolean success = personService.createPerson(newPerson);
+
+            // prepare response
+            if(success){
+                ctx.status(201);
+            } else {
+                ctx.status(400);
+            }
+        });
+
+        app.delete("/people", ctx -> ctx.status(405));
+
     }
 }

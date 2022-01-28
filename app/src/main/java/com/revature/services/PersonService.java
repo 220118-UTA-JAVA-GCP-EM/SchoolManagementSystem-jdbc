@@ -26,6 +26,13 @@ public class PersonService {
         return personDao.createPerson(p);
     }
 
+    public boolean createPerson(Person p){
+        String email = p.getFirst() + "." + p.getLast() + "@school.edu";
+        email = email.toLowerCase();
+        p.setEmail(email);
+        return personDao.createPerson(p);
+    }
+
     public List<Person> getAll(){
         return personDao.getAllPeople();
     }
@@ -47,6 +54,10 @@ public class PersonService {
 
     public Person getById(int id){
         return personDao.getPersonById(id);
+    }
+
+    public boolean update(Person p){
+        return personDao.updatePerson(p);
     }
 
 }

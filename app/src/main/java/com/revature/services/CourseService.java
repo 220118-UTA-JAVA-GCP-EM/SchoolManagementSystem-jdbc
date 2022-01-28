@@ -6,7 +6,8 @@ import com.revature.models.Type;
 
 import java.util.Collections;
 import java.util.List;
-
+//the following methods are no longer in use, now that were using a db to represent our data and thus this class has been deprecated
+@Deprecated
 public class CourseService {
 
     //Our school will need the following logic for courses

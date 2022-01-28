@@ -28,6 +28,7 @@ dependencies {
 
     implementation 'io.javalin:javalin:4.3.0'
     implementation 'org.slf4j:slf4j-simple:1.7.31'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.4'
 
 
 }
