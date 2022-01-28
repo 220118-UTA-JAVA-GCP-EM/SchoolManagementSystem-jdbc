@@ -11,6 +11,7 @@ public interface PersonDao {
     public Person getPersonById(int id);
 
     public boolean updatePerson(Person p);
-    //other crud methods
+    public Person getPersonByUsernameAndPassword(String email, String password);
+
 
 }

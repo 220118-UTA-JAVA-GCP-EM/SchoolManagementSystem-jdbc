@@ -60,4 +60,8 @@ public class PersonService {
         return personDao.updatePerson(p);
     }
 
+    public Person getByUsernameAndPassword(String email, String pass){
+        return personDao.getPersonByUsernameAndPassword(email,pass);
+    }
+
 }

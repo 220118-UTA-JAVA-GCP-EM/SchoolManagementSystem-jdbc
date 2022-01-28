@@ -137,4 +137,40 @@ public class PersonDaoImpl implements PersonDao {
         }
         return false;
     }
+
+
+    @Override
+    public Person getPersonByUsernameAndPassword(String email, String password) {
+        String sql = "select * from person where email = ? and password = ? ";
+        try (Connection c = ConnectionUtil.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)){
+
+            ps.setString(1, email);
+            ps.setString(2, password);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()){
+                Person person = new Person();
+                person.setPersonId(rs.getInt("id"));
+
+                // get the 0/1 ordinal value that is stored in the database
+                int typeOrdinal = rs.getInt("type");
+                // obtain the values in the ENUM, in an array format where their ordinal corresponds
+                // with their position in the array
+                Type[] types = Type.values(); //["TEACHER", "STUDENT"]
+                // access the appropriate type using the array and ordinal value
+                person.setType(types[typeOrdinal]);
+
+                person.setFirst(rs.getString("first"));
+                person.setLast(rs.getString("last"));
+                person.setEmail(rs.getString("email"));
+                person.setPassword(rs.getString("password"));
+                return person;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
