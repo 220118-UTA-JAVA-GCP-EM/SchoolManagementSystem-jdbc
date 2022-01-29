@@ -8,7 +8,7 @@ import io.javalin.http.UnauthorizedResponse;
 
 public class AuthController {
 
-    private PersonService personService = new PersonService();
+    private final PersonService personService = new PersonService();
 
     public void authenticateLogin(Context ctx){
         // interpret request

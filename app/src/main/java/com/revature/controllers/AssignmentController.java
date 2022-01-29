@@ -6,7 +6,7 @@ import io.javalin.http.Context;
 
 public class AssignmentController {
 
-    private AssignmentService assignmentService = new AssignmentService();
+    private final AssignmentService assignmentService = new AssignmentService();
 
     public void handleGetOne(Context ctx){
         String idParam = ctx.pathParam("id");

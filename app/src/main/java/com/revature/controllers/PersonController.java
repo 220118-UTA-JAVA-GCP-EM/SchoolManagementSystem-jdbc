@@ -9,7 +9,7 @@ import java.util.List;
 
 public class PersonController {
 
-    PersonService personService = new PersonService();
+    private final PersonService personService = new PersonService();
 
     public void handleGetAll(Context ctx){
         List<Person> people = personService.getAll();

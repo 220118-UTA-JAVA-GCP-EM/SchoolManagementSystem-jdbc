@@ -12,11 +12,11 @@ import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class JavalinApp {
 
-    private PersonController personController = new PersonController();
-    private LoggingUtil loggingUtil = new LoggingUtil();
-    private AssignmentController assignmentController = new AssignmentController();
-    private AppExceptionHandler appExceptionHandler = new AppExceptionHandler();
-    private AuthController authController = new AuthController();
+    private final PersonController personController = new PersonController();
+    private final LoggingUtil loggingUtil = new LoggingUtil();
+    private final AssignmentController assignmentController = new AssignmentController();
+    private final AppExceptionHandler appExceptionHandler = new AppExceptionHandler();
+    private final AuthController authController = new AuthController();
 
     private Javalin app = Javalin.create().routes(()->{
         path("people",()->{

@@ -6,11 +6,10 @@ import com.revature.models.Person;
 import com.revature.models.Type;
 
 import java.util.List;
-import java.util.Locale;
 
 public class PersonService {
 
-    private PersonDao personDao = new PersonDaoImpl();
+    private final PersonDao personDao = new PersonDaoImpl();
 
     //Services are what we use to do CRUD functionality, and use to link in between our data layers and our model layers
     //Create

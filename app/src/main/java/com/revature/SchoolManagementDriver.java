@@ -3,17 +3,6 @@
  */
 package com.revature;
 
-import com.revature.controllers.AppExceptionHandler;
-import com.revature.controllers.PersonController;
-import com.revature.daos.PersonDao;
-import com.revature.daos.PersonDaoImpl;
-import com.revature.models.Person;
-import com.revature.models.Type;
-import com.revature.services.PersonService;
-import io.javalin.Javalin;
-import io.javalin.http.Context;
-
-import java.util.List;
 
 public class SchoolManagementDriver {
 
