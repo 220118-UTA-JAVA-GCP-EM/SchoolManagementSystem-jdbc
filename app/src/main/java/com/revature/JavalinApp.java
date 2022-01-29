@@ -6,7 +6,6 @@ import com.revature.controllers.AuthController;
 import com.revature.controllers.PersonController;
 import com.revature.util.LoggingUtil;
 import io.javalin.Javalin;
-import org.checkerframework.checker.units.qual.A;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 

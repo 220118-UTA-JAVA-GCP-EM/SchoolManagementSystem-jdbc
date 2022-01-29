@@ -3,8 +3,6 @@ package com.revature.controllers;
 import com.revature.models.Person;
 import com.revature.services.PersonService;
 import io.javalin.http.Context;
-
-import javax.naming.ldap.Control;
 import java.util.List;
 
 public class PersonController {
