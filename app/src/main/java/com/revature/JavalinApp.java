@@ -41,5 +41,9 @@ public class JavalinApp {
         app.start(port);
     }
 
+    public void stop(){
+        app.stop();
+    }
+
 
 }
